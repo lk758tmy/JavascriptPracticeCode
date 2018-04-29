@@ -4,7 +4,11 @@
     <body>
         <script>
         var score=prompt("成绩");
-        if(score>=85){
+        if(score>100){
+            document.write("数值错误")
+        }else if(score<0){
+            document.write("数据错误")
+        }else if(score>=85){
             document.write("优");
         }else if(score>=75){
             document.write("良");
@@ -14,5 +18,23 @@
             document.write("不及格");
         }
         </script>
+        <hr/>
+        if(条件){<br/>
+           如果真，则执行<br/>
+        }<br/>
+        <hr/>
+        if(条件){<br/>
+            如果真，则执行<br/>
+        }else{<br/>
+            假，则执行<br/>
+        }<br/>
+        <hr/>
+        if(条件){<br/>
+            如果真，则执行<br/>
+        }else if(假，判断新条件){<br/>
+            新条件如果真，则执行<br/>
+        }else{<br/>
+            如果假，则执行<br/>
+        }<br/>
     </body>
 </html>

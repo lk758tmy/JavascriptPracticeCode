@@ -1,0 +1,52 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <table style="border:solid black 3px">
+            <tr>
+                <td>R1C1</td>
+                <td>R1C2</td>
+                <td>R1C3</td>
+            </tr>   
+            <tr>              
+                <td>R2C1</td>
+                <td>R2C2</td>
+                <td>R2C3</td>
+            </tr>
+            <tr>
+                <td>R3C1</td>
+                <td>R3C2</td>
+                <td>R3C3</td>
+            </tr>
+        </table>
+        <hr/>
+        <script>    
+        var row=prompt("行数");
+        var col=prompt("列数");
+        var i_r=0,i_c=0,a=0;
+        document.write("<table>");
+        while(i_r<row){
+            i_r=i_r+1;
+            document.write("<tr>");
+            i_c=0;
+            while(i_c<col){
+                i_c=i_c+1;
+                if(a==0){ //判断x=y是否成立时 应写为 if（x==y）{}
+                    document.write("<td style=\"background-color:black\">R"+i_r+"C"+i_c+"</td>");
+                    a=1
+                }else{
+                    document.write("<td style='background-color:white'>R"+i_r+"C"+i_c+"</td>");
+                    a=0
+                }
+            }
+            document.write("</tr>");
+            if(a==0){
+                a=1;
+            }else{
+                a=0;
+            }
+        }
+        document.write("</table>");
+        </script>
+    </body>
+</html>
