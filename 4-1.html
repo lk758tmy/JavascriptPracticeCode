@@ -1,0 +1,66 @@
+<html><!--Not completed and Still have bugs-->
+    <head>
+        <title>作业2-整数大数相加</title>
+    </head>
+    <body>
+        <script>
+            var x1=prompt("First Number");
+            var x2=prompt("Second Number");//询问并获取二数
+
+            var abs=0;
+            if(x1.substring(0,1)=="-"){//截取x1第一个字符
+                abs=abs+1
+                x1=x1.substring(1,x1.length)
+            }
+            if(x2.substring(0,1)=="-"){
+                abs=abs+2
+                x2=x2.substring(1,x2.length)
+            }//判断正负并去符号
+
+            var n=x1.length-x2.length;
+            var i=0;
+            if(n>0){
+               while(i<n){
+                   i=i+1
+                   x2="0"+x2
+               } 
+            }else if(n<0){
+                n=-n
+                while(i<n){
+                   i=i+1
+                   x1="0"+x1
+                }
+            }//补全位数
+    //以上部分代码无问题，以下部分代码疑似在while中有问题
+    
+            n=0;
+            i=x1.length;
+            var tmp=0;
+            var x3="";
+            if(abs==0 || abs==3){//同号相加 ||表示或 &&表示与
+                while(i>0){
+                    i=i-1
+                    n=Number(x1.substring(i,i+1))+Number(x2.substring(i,i+1))+tmp
+                    if(n.length==1){
+                        tmp=0
+                        x3=String(n)+x3
+                    }else{
+                        tmp=Number(n.substring(0,1))
+                        x3=n.substring(1,2)+x3
+                    }                   
+                }
+                if(tmp /= 0){
+                    x3=String(tmp)+x3
+                }
+                if(abs==3){
+                    x3="-"+x3//重新添加符号
+                }
+            }else if(abs=1){//异号相减
+                
+            }else if(abs=2){//异号相减
+
+            }
+            document.write(x3);
+        </script>
+    </body>
+</html>
