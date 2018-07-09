@@ -1,13 +1,13 @@
 <html>
     <head>
-        <title>作业2-整数大数相加</title>
+        <title>作业2-整数大数相减</title><!--几乎是倒数相加的ctrl c+v版-->
     </head>
     <body>
         <script>
             var x1=prompt("First Number");
             var x2=prompt("Second Number");//询问并获取二数
             var abs=0;
-            if(x1.substring(0,1)=="-"){//截取x1第一个字符
+            if(x1.substring(0,1)=="-"){
                 abs=abs+1
                 x1=x1.substring(1,x1.length)
             }
@@ -15,25 +15,11 @@
                 abs=abs+2
                 x2=x2.substring(1,x2.length)
             }//判断正负并去符号
-            var n=x1.length-x2.length;
-            var i=0;
-            if(n>0){
-               while(i<n){
-                   i=i+1
-                   x2="0"+x2
-               } 
-            }else if(n<0){
-                n=-n
-                while(i<n){
-                   i=i+1
-                   x1="0"+x1
-                }
-            }//补全位数
             n=0;
             i=x1.length;
             var tmp=0;
             var x3="";
-            if(abs==0 || abs==3){//同号相加 ||表示或 &&表示与
+            if(abs==1 || abs==2){//异号相加
                 while(i>0){
                     i=i-1
                     n=Number(x1.substring(i,i+1))+Number(x2.substring(i,i+1))+tmp
@@ -42,18 +28,17 @@
                         tmp=0
                         x3=String(n)+x3
                     }else{
-                        tmp=Math.floor(n/10)//向下取整
-                        x3=String(n%10)+x3//a%b:a除以b的余数
+                        tmp=Math.floor(n/10)
+                        x3=String(n%10)+x3
                     }//进位判断
                 }
-                if(tmp != 0){//!=表示不等于
+                if(tmp != 0){
                     x3=String(tmp)+x3
                 }
-                if(abs==3){
+                if(abs==1){
                     x3="-"+x3
                 }//重新添加符号
-            }else{//异号相减
-                }else{
+            }else{//同号相减
                     while(i>0){
                 if(x1==x2){
                     x3="0"
@@ -77,15 +62,14 @@
                         x3=x3.substring(1,x3.length)
                     }//去数字开头的0
                     if(x1>x2){
-                        if(abs==1){
+                        if(abs==3){
                             x3="-"+x3
                         }
                     }else{
-                         if(abs==2){
+                         if(abs==0){
                             x3="-"+x3
                         }
                     }//重新添加符号
-                }
             }
             document.write(x3);
         </script>
