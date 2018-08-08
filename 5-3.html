@@ -1,0 +1,54 @@
+<html>
+    <head></head>
+    <body>
+        <canvas id="c2" width="660" height="450"></canvas>
+        <script>
+            var c2=document.getElementById("c2");
+            var ctx=c2.getContext("2d");
+
+            ctx.beginPath();
+            var startAngle = 0;//0-->正右起始
+            var endAngle = Math.PI * 2;//采用弧度制 Math.PI-->π 注意大小写
+            ctx.arc(120,120,90,startAngle,endAngle);//画圆(弧)
+            //圆心x，圆心y，半径，stA，edA，方向(默认顺时针)
+            ctx.lineWidth=5;
+            ctx.strokeStyle="#FF00FF";
+            ctx.stroke();
+
+            ctx.beginPath();
+            var startAngle = Math.PI/2;//正下
+            var endAngle = Math.PI*2*(45/360)+Math.PI/2;//135度处
+            ctx.arc(330,120,90,startAngle,endAngle);
+            ctx.lineWidth=5;
+            ctx.strokeStyle="#000000";
+            ctx.stroke();
+
+            ctx.beginPath();
+            var startAngle =Math.PI/2;
+            var endAngle = Math.PI*2*(45/360)+Math.PI/2;
+            ctx.arc(330,120,90,startAngle,endAngle,true);
+            //第六个参数:true逆时针,false顺时针
+            ctx.lineWidth=5;
+            ctx.strokeStyle="#00FF00";
+            ctx.stroke();
+
+            ctx.beginPath();//必需
+            var startAngle = 0;
+            var endAngle = Math.PI * 2;
+            ctx.arc(540,120,90,startAngle,endAngle);
+            ctx.fillStyle="#AAAAAA";
+            ctx.fill();//绘制实心圆
+            //ctx.lineWidth=5;
+            //ctx.strokeStyle="#666666";
+            //ctx.stroke();
+
+            ctx.beginPath();
+            var startAngle = 0;
+            var endAngle = Math.PI*2*(90/360);
+            ctx.arc(120,330,90,startAngle,endAngle);
+            ctx.lineTo(120,330)//自动调用closePath去起点
+            ctx.fillStyle="#FFFF00";
+            ctx.fill();//绘制扇形    
+        </script>
+    </body>
+</html>

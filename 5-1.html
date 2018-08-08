@@ -1,0 +1,27 @@
+<html>
+<head></head>
+<body>
+    <canvas id="Canvas_0" width="480" height="360"></canvas><!--创建画板-->
+    <!--原点在左上角，正右为x轴正方向，正下为y轴正方向-->
+    <script>
+        var canvas_0=document.getElementById("Canvas_0");
+        var ctx=canvas_0.getContext("2d");//2d-->获取2d绘图借口(webgl-->3d)
+        
+        ctx.beginPath()
+        ctx.moveTo(100,100);
+        ctx.lineTo(200,200); 
+        //ctx.moveTo(200,100);
+        ctx.lineTo(300,200);//记录路径path
+        ctx.strokeStyle="#00FF00";//设置颜色
+        ctx.lineWidth=3;//设置宽度
+        ctx.stroke();//渲染路径，必需
+
+        ctx.beginPath();//开始绘制新的路径，提高cpu->gpu效率
+        ctx.moveTo(100,200);
+        ctx.lineTo(200,250);
+        ctx.strokeStyle="#FF0000";
+        ctx.lineWidth=5;
+        ctx.stroke();
+    </script>
+</body>
+</html>

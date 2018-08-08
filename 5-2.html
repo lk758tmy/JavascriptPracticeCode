@@ -1,0 +1,34 @@
+<html>
+    <head></head>
+    <body>
+        <canvas id="c1" width="480" height="360"></canvas>
+        <script>
+            var c1=document.getElementById("c1");
+            var ctx=c1.getContext("2d");
+            
+            ctx.beginPath();
+            ctx.moveTo(50,100);
+            ctx.lineTo(50,200);
+            ctx.strokeStyle="#00FFFF";
+            ctx.lineWidth=8;
+            ctx.stroke();
+
+            //ctx.beginPath(); 无需
+            ctx.fillStyle="#00FF00";
+            ctx.fillRect(100,100,200,200);//绘制实心矩形
+            //起始x，起始y(左上角0)，宽度，长度
+            //ctx.beginPath(); 无需
+            ctx.strokeStyle="#0000FF";
+            ctx.lineWidth=4;
+            ctx.strokeRect(100,100,200,200);//绘制空心矩形，同上
+            //ctx.stroke(); 无需
+            
+            ctx.beginPath(); //需要！
+            ctx.moveTo(350,100);
+            ctx.lineTo(350,200);
+            ctx.strokeStyle="#FFFF00";
+            ctx.lineWidth=8;
+            ctx.stroke();
+            </script>
+    </body>
+</html>
