@@ -1,0 +1,19 @@
+<html>
+    <head></head>
+    <body>
+        <canvas id="c4" width="480" height="360"></canvas>
+        <script>
+            var c4=document.getElementById("c4")
+            var ctx=c4.getContext("2d")
+
+            ctx.beginPath()
+            ctx.font="48px 'microsoft yahei'"
+            //大小‘字体名称’ 若字体名称无空格则无需引号
+            ctx.fillStyle="#FF0000"
+            ctx.fillText("HelloWorld",60,60)//绘制实心文本
+            ctx.strokeStyle="#0000FF"
+            ctx.strokeText("HelloWorld",60,60)//绘制文本轮廓
+            //文本内容，起始x，起始y（左下角）
+        </script>
+    </body>>
+</html>

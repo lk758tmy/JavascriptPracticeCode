@@ -1,0 +1,39 @@
+<html>
+    <head></head>
+    <body>
+        <canvas id="c3" width="480" height="360"></canvas>
+        <script>
+            var c3=document.getElementById("c3")
+            var ctx=c3.getContext("2d")
+
+            ctx.beginPath()
+
+            var startAngel=Math.PI
+            var endAngel=Math.PI*3/2
+            ctx.arc(60,60,55,startAngel,endAngel)
+            ctx.lineTo(420,5)
+
+            startAngel=endAngel
+            endAngel=0
+            ctx.arc(420,60,55,startAngel,endAngel)
+            ctx.lineTo(475,300)
+
+            startAngel=endAngel
+            endAngel=Math.PI*1/2
+            ctx.arc(420,300,55,startAngel,endAngel)
+            ctx.lineTo(60,355)
+
+            startAngel=endAngel
+            endAngel=Math.PI
+            ctx.arc(60,300,55,startAngel,endAngel)
+            ctx.lineTo(5,60)
+
+            ctx.fillStyle="#00FFFF"
+            ctx.fill()
+            ctx.strokeStyle="#0000AA"
+            ctx.lineWidth=5
+            ctx.stroke()
+            //绘制圆角矩形
+        </script>
+    </body>
+</html>
