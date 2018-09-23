@@ -1,0 +1,79 @@
+<html>
+
+<head></head>
+
+<body>
+    <canvas id="canvas" width=480 height=480></canvas>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        var planets = [];//创建数组
+        planets.push({
+            name: "earth",
+            oR: 50,
+            r: 8,
+            v: 5 / 180 * Math.PI,
+            ar: 0,
+            cl: "#555555",
+            satellites: [
+                {
+                    name: "moon",
+                    oR: 10,
+                    r: 5,
+                    cl: "#FF0000",
+                    v: 45 / 180 * Math.PI,
+                    ar: 0,
+                }
+            ]
+        });//在数组中加入一个对象
+        planets.push({
+            oR: 75,
+            r: 10,
+            v: 7 / 180 * Math.PI,
+            ar: 0,
+            cl: "#FFAA44"
+        });
+
+
+        window.setInterval(function () {
+            ctx.clearRect(0, 0, 480, 480);
+
+            ctx.beginPath();
+            ctx.moveTo(210, 240);
+            ctx.arc(240, 240, 30, 0, Math.PI * 2);
+            ctx.fillStyle = "#FFFF00";
+            ctx.fill();
+
+            for (var i = 0; i < planets.length; i++) {
+                //数组.length为其成员数，i++代表i每次+1
+                var planet = planets[i];//局部变量
+                ctx.beginPath();
+                var x = 240 + Math.cos(planet.ar) * planet.oR;
+                var y = 240 + Math.sin(planet.ar) * planet.oR;
+                ctx.moveTo(x - planet.r, y);
+                ctx.arc(x, y, planet.r, 0, Math.PI * 2);
+                ctx.fillStyle = planet.cl;
+                ctx.fill();
+                if (planet.satellites) {
+                    for (var j = 0; j < planet.satellites.length; j++) {
+                        var sate = planet.satellites[i];//局部变量
+                        ctx.beginPath();
+                        var x2 = x + Math.cos(sate.ar) * sate.oR;
+                        var y2 = y + Math.sin(sate.ar) * sate.oR;
+                        ctx.moveTo(x2 - sate.r, y2);
+                        ctx.arc(x2, y2, sate.r, 0, Math.PI * 2);
+                        ctx.fillStyle = sate.cl;
+                        ctx.fill();
+                        sate.ar+=sate.v;
+                    }
+                }
+                planet.ar += planet.v;//自相加
+            }
+
+
+        }, 50)
+    </script>
+</body>
+
+</html>

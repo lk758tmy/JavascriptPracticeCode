@@ -1,0 +1,40 @@
+<html>
+
+<head></head>
+
+<body>
+    <canvas id="Canvas" Width=480 Height=360></canvas>
+    <script>
+        var canvas = document.getElementById("Canvas");
+        var ctx = canvas.getContext("2d");
+        var a = 100
+
+        var pid = window.setInterval(function () {
+            ctx.clearRect(0, 0, 480, 360);//清空，起始x y 宽度 高度
+            /*ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.lineTo(480,0);
+            ctx.lineTo(480,360);
+            ctx.lineTo(0,360);
+            ctx.lineTo(0,0);
+            ctx.fillStyle="#FFFFFF";
+            ctx.fill();*/
+
+            ctx.beginPath()
+            ctx.arc(a, 100, 32, 0, Math.PI * 2);
+            ctx.fillStyle = "#000000";
+            //ctx.strokeStyle="#000000"
+            ctx.lineWidth = 5;
+            ctx.fill();
+            //ctx.stroke()
+
+            a = a + 1;
+
+            if (a == 400) {
+                window.clearInterval(pid);//停止执行pid
+            }
+        }, 20);//定时每20毫秒执行{}中的内容
+    </script>
+</body>
+<!--Alt+shift+F 格式化-->
+</html>
