@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>中国象棋棋盘绘制</title>
+    </head>
+    <body>
+        <canvas id="Chessboard" width="360" height="400"></canvas>
+        <script>
+            var Chessboard=document.getElementById("Chessboard");
+            var cb=Chessboard.getContext("2d");
+            
+            cb.beginPath();
+
+            cb.moveTo(20,20);
+            cb.lineTo(20,380); 
+            cb.moveTo(340,20);
+            cb.lineTo(340,380); 
+            var a=60;
+            while(a<=300){
+                cb.moveTo(a,20);
+                cb.lineTo(a,180);
+                cb.moveTo(a,220);
+                cb.lineTo(a,380);
+                a=a+40;
+            }//竖线
+            
+            a=20;
+            while(a<=380){
+                cb.moveTo(20,a);
+                cb.lineTo(340,a);
+                a=a+40;
+            }//横线
+
+            cb.moveTo(140,20);
+            cb.lineTo(220,100);
+            cb.moveTo(220,20);
+            cb.lineTo(140,100);
+            cb.moveTo(140,300);
+            cb.lineTo(220,380);
+            cb.moveTo(220,300);
+            cb.lineTo(140,380);//斜线
+            
+            a=20
+            while(a<=340){
+                cb.moveTo(a+5,140);
+                cb.arc(a,140,5,0,Math.PI*2);
+                cb.moveTo(a+5,260);
+                cb.arc(a,260,5,0,Math.PI*2);
+                a=a+80;
+            }
+            cb.moveTo(65,100);
+            cb.arc(60,100,5,0,Math.PI*2);
+            cb.moveTo(65,300);
+            cb.arc(60,300,5,0,Math.PI*2);            
+            cb.moveTo(305,100);
+            cb.arc(300,100,5,0,Math.PI*2);
+            cb.moveTo(305,300);
+            cb.arc(300,300,5,0,Math.PI*2);//星位
+
+            cb.strokeStyle="#000000";
+            cb.lineWidth=2;
+            cb.stroke();//落笔
+        </script>
+    </body>
+</html>
