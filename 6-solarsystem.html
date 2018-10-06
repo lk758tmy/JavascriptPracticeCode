@@ -3,7 +3,7 @@
 <head></head>
 
 <body>
-    <canvas id="canvas" width=480 height=480></canvas>
+    <canvas id="canvas" width=3600 height=3600></canvas>
     <script>
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
@@ -12,36 +12,86 @@
         planets.push({
             name: "earth",
             oR: 50,
-            r: 8,
-            v: 5 / 180 * Math.PI,
+            r: 6.5,
+            v: 8 / 180 * Math.PI,
             ar: 0,
-            cl: "#555555",
+            cl: "#00FFFF",
             satellites: [
                 {
                     name: "moon",
-                    oR: 10,
-                    r: 5,
-                    cl: "#FF0000",
-                    v: 45 / 180 * Math.PI,
+                    oR: 2,
+                    r: 2,
+                    cl: "#AAAAAA",
+                    v: 100 / 180 * Math.PI,
                     ar: 0,
                 }
             ]
         });//在数组中加入一个对象
         planets.push({
-            oR: 75,
-            r: 10,
-            v: 7 / 180 * Math.PI,
+            name:"water",
+            oR: 20,
+            r: 2.5,
+            v: 36 / 180 * Math.PI,
             ar: 0,
-            cl: "#FFAA44"
+            cl: "#0000AA"
+        });
+        planets.push({
+            name:"gold",
+            oR: 36,
+            r: 5.5,
+            v: 13 / 180 * Math.PI,
+            ar: 0,
+            cl: "#CCCC00"
+        });
+        planets.push({
+            name:"fire",
+            oR: 75,
+            r: 3.5,
+            v: 4 / 180 * Math.PI,
+            ar: 0,
+            cl: "#FF0000"
+        });
+        planets.push({
+            name:"wood",
+            oR: 260,
+            r: 72,
+            v: 0.68 / 180 * Math.PI,
+            ar: 0,
+            cl: "#997700"
+        });
+        planets.push({
+            name:"dirt",
+            oR: 475,
+            r: 60,
+            v: 0.27 / 180 * Math.PI,
+            ar: 0,
+            cl: "#EECC00"
+        });
+        planets.push({
+            name:"sky",
+            oR: 950,
+            r: 25.5,
+            v: 0.1 / 180 * Math.PI,
+            ar: 0,
+            cl: "#2222EE"
+        });
+        planets.push({
+            name:"sea",
+            oR: 1500,
+            r: 24.5,
+            v: 0.05 / 180 * Math.PI,
+            ar: 0,
+            cl: "#4444BB"
         });
 
 
+
         window.setInterval(function () {
-            ctx.clearRect(0, 0, 480, 480);
+            ctx.clearRect(0, 0, 3600, 3600);
 
             ctx.beginPath();
-            ctx.moveTo(210, 240);
-            ctx.arc(240, 240, 30, 0, Math.PI * 2);
+            ctx.moveTo(1785, 1800);
+            ctx.arc(1800, 1800, 15, 0, Math.PI * 2);
             ctx.fillStyle = "#FFFF00";
             ctx.fill();
 
@@ -49,8 +99,8 @@
                 //数组.length为其成员数，i++代表i每次+1
                 var planet = planets[i];//局部变量
                 ctx.beginPath();
-                var x = 240 + Math.cos(planet.ar) * planet.oR;
-                var y = 240 + Math.sin(planet.ar) * planet.oR;
+                var x = 1800 + Math.cos(planet.ar) * planet.oR;
+                var y = 1800 + Math.sin(planet.ar) * planet.oR;
                 ctx.moveTo(x - planet.r, y);
                 ctx.arc(x, y, planet.r, 0, Math.PI * 2);
                 ctx.fillStyle = planet.cl;
