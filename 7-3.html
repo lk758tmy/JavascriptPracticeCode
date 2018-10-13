@@ -1,0 +1,56 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <canvas width="480px" height="360px" id="c1" style="border:solid 2px #000000"></canvas>
+    <canvas width="480px" height="360px" id="c2" style="display:none;"></canvas>
+    <script>
+        var c1 = document.getElementById("c1");
+        var ctx = c1.getContext("2d");
+        var c2 = document.getElementById("c2");
+        var ctx2 = c2.getContext("2d");
+        var bX, bY, fX, fY, t = 50;
+        var startL;
+
+
+        document.addEventListener("mousedown", function (event) {
+            startL = true;
+            bX = event.clientX - c1.offsetLeft - 2;//border
+            bY = event.clientY - c1.offsetTop - 2;
+        })
+        document.addEventListener("mousemove", function (event) {
+            fX = event.clientX - c1.offsetLeft - 2;
+            fY = event.clientY - c1.offsetTop - 2;
+        })
+        document.addEventListener("mouseup", function (event) {
+            startL = false;
+            ctx2.beginPath();
+            ctx2.moveTo(bX, bY);
+            ctx2.lineTo(fX, fY);
+            ctx2.stokeStyle = "#000000";
+            ctx2.stroke()
+        })
+
+
+        window.setInterval(function () {
+            ctx.clearRect(0, 0, 480, 360);
+
+
+            ctx.drawImage(c2, 0, 0);//将画板c2(图片形式)画上，起始坐标0,0
+            if (startL) {
+                ctx.beginPath();
+                ctx.moveTo(bX, bY);
+                ctx.lineTo(fX, fY);
+                ctx.stokeStyle = "#000000";
+                ctx.stroke()
+            }
+        }, 50)//放在循环外
+
+
+    </script>
+</body>
+
+</html>

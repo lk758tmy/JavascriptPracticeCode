@@ -1,0 +1,79 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <canvas width="480px" height="360px" id="canvas"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var x = 240;
+        var y = 180;
+        var mouseX = 300, mouseY = 200, mx, my, arc;
+
+        document.addEventListener("mousemove", function (event) {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+        })
+        document.addEventListener("mousedown", function (event) {
+            //alert(event);//botton 左键0右键2 bottons 左键1右键2
+            x = mouseX;
+            y = mouseY;
+        })
+
+        window.setInterval(function () {
+            ctx.clearRect(0, 0, 480, 360);
+
+            /*if (mouseX - x < 0) {
+                mx = -1;
+            } else {
+                mx = 1;
+            }
+            if (mouseY - y < 0) {
+                my = -1;
+            } else {
+                my = 1;
+            }*/
+
+            var r = Math.sqrt((mouseX - x) * (mouseX - x) + (mouseY - y) * (mouseY - y));
+            arc = 0;
+            if (r > 0) {
+                arc = Math.asin((mouseX - x) / r);
+                if (y - mouseY < 0) {
+                    arc = Math.PI - arc;
+                }
+            }
+            /*if (Math.floor(Math.cos(arc)) == 0) {
+                x = x + mx * 1
+            } else {
+                x = x + Math.cos(arc) * 1 * mx;
+            }
+            if (Math.floor(Math.sin(arc)) == 0) {
+                y = y + my * 1
+            } else {
+                y = y + Math.sin(arc) * 1 * my;
+            }*/
+            x = x + Math.sin(arc);
+            y = y - Math.cos(arc);
+
+
+            ctx.beginPath();
+            ctx.moveTo(x - 30, y);
+            ctx.arc(x, y, 30, 0, Math.PI * 2);
+            ctx.fillStyle = "#0000FF";
+            ctx.fill();
+
+            /*ctx.beginPath()
+            ctx.font = "48px 'microsoft yahei'"
+            ctx.fillStyle = "#FF0000"
+            ctx.fillText(Math.floor(arc * 100) / 100 / Math.PI * 180, 100, 100);*/
+
+        }, 5)//放在循环外
+
+
+    </script>
+</body>
+
+</html>
