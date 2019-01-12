@@ -1,0 +1,49 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <canvas width='480px' height='360px' id='Cshow' style='border:solid 2px #000000'></canvas>
+        <canvas width='480px' height='360px' id='Creal' style="display:none;"></canvas>
+        <script>
+            var OX,OY,fnX,fnY,flag=false,r1,r2;
+
+            var Cs = document.getElementById("Cshow");
+            var CTXs = Cs.getContext("2d");
+            var Cr = document.getElementById("Creal");
+            var CTXr = Cr.getContext("2d");
+
+            document.addEventListener("mousedown",function(event){
+                flag=true;
+                OX=event.clientX-Cs.offsetLeft-2;
+                OY=event.clientY-Cs.offsetTop-2;
+            })
+            document.addEventListener("mousemove",function(event){
+                fnX=event.clientX-Cs.offsetLeft-2;
+                fnY=event.clientY-Cs.offsetTop-2;
+            })
+            document.addEventListener("mouseup",function(event){
+                flag=false;
+                r1=Math.sqrt((fnX-OX)**2+(fnY-OY)**2);
+                CTXr.beginPath();
+                //CTXr.moveTo(OX-r1,OY);
+                CTXr.arc(OX,OY,r1,0,Math.PI*2);
+                CTXr.stokeStyle = "#000000";
+                CTXr.stroke();
+            })
+
+            window.setInterval(function () {
+            CTXs.clearRect(0, 0, 480, 360);
+            CTXs.drawImage(Cr, 0, 0);//将画板c2(图片形式)画上，起始坐标0,0
+            if (flag==true) {                
+                r2=Math.sqrt((fnX-OX)**2+(fnY-OY)**2);
+                CTXs.beginPath();
+                //CTXs.moveTo(OX-r2, OY);
+                CTXs.arc(OX,OY,r2,0,Math.PI*2);
+                CTXs.stokeStyle = "#000000";
+                CTXs.stroke()
+            }
+        }, 50)
+
+        </script>
+    </body>
+</html>

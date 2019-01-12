@@ -30,28 +30,28 @@
             keyStatus[event.keyCode] = false;
         })
         //鼠标： mousedown mouseup mousemove
-        document.addEventListener("mousemove", function (event) {
+        /*document.addEventListener("mousemove", function (event) {
             mouseX = event.clientX;
             mouseY = event.clientY;
-        })
+        })*/
         document.addEventListener("mousedown", function (event) {
             //alert(event);//botton 左键0右键2 bottons 左键1右键2
-            x = mouseX;
-            y = mouseY;
+            x = event.clientX;
+            y = event.clientY;
         })
 
         window.setInterval(function () {
             ctx.clearRect(0, 0, 480, 360);
-            if (keyStatus[65]) {//默认为布尔值
+            if (keyStatus[65]==true) {//默认为布尔值
                 x = x - 1;
             }
-            if (keyStatus[87]) {
+            if (keyStatus[87]==true) {
                 y = y - 1;
             }
-            if (keyStatus[68]) {
+            if (keyStatus[68]==true) {
                 x = x + 1;
             }
-            if (keyStatus[83]) {
+            if (keyStatus[83]==true) {
                 y = y + 1;
             }
             ctx.beginPath();
